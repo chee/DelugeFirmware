@@ -138,7 +138,7 @@ private:
 	void deleteClipInstance(Output* output, int32_t clipInstanceIndex, ClipInstance* clipInstance, Action* action,
 	                        bool clearingWholeArrangement = false);
 	void clearArrangement();
-	void rememberInteractionWithClipInstance(int32_t yDisplay, ClipInstance* clipInstance, int32_t squareStart);
+	void rememberInteractionWithClipInstance(int32_t yDisplay, ClipInstance* clipInstance);
 	void deleteOutput();
 	void auditionEnded();
 	void goToSongView();

@@ -350,7 +350,37 @@ doActualSimpleChange:
 	}
 
 	else if (b == Y_ENC) {
-		if (on) {
+		if (currentUIMode == UI_MODE_HOLDING_ARRANGEMENT_ROW) {
+			Output* output = outputsOnScreen[yPressedEffective];
+			uint32_t xScroll = currentSong->xScroll[NAVIGATION_ARRANGEMENT];
+			ClipInstance* clipInstance = output->clipInstances.getElement(pressedClipInstanceIndex);
+			if (clipInstance->clip->type == ClipType::AUDIO) {
+				int32_t square = getPosFromSquare(xPressed, xScroll);
+				clipInstance->length = (clipInstance->pos - (square - 1));
+
+				Clip* oldClip = clipInstance->clip;
+
+				if (oldClip && !oldClip->isArrangementOnlyClip() && !oldClip->getCurrentlyRecordingLinearly()) {
+					actionLogger.deleteAllLogs();
+
+					int32_t error = arrangement.doUniqueCloneOnClipInstance(
+					    clipInstance, clipInstance->length - (square - clipInstance->pos), true);
+
+					AudioClip* clip = (AudioClip*)clipInstance->clip;
+
+					clip->sampleHolder.startPos = (square - clipInstance->pos);
+					clip->sampleHolder.claimClusterReasons(clip->sampleControls.reversed);
+
+					if (error) {
+						display->displayError(error);
+					}
+					else {
+						uiNeedsRendering(this, 1 << yPressedEffective, 0);
+					}
+				}
+			}
+		}
+		else if (on) {
 			currentSong->displayCurrentRootNoteAndScaleName();
 		}
 	}
@@ -1185,13 +1215,11 @@ void ArrangerView::deleteClipInstance(Output* output, int32_t clipInstanceIndex,
 	currentSong->deletingClipInstanceForClip(output, clip, action, !clearingWholeArrangement);
 }
 
-void ArrangerView::rememberInteractionWithClipInstance(int32_t yDisplay, ClipInstance* clipInstance,
-                                                       int32_t squareStart) {
+void ArrangerView::rememberInteractionWithClipInstance(int32_t yDisplay, ClipInstance* clipInstance) {
 	lastInteractedOutputIndex = yDisplay + currentSong->arrangementYScroll;
 	lastInteractedPos = clipInstance->pos;
 	lastInteractedSection = clipInstance->clip ? clipInstance->clip->section : 255;
 	lastInteractedClipInstance = clipInstance;
-	lastSquareStart = squareStart;
 }
 
 void ArrangerView::editPadAction(int32_t x, int32_t y, bool on) {
@@ -1220,7 +1248,7 @@ void ArrangerView::editPadAction(int32_t x, int32_t y, bool on) {
 						uiNeedsRendering(this, 1 << y, 0);
 					}
 				}
-				rememberInteractionWithClipInstance(y, clipInstance, squareStart);
+				rememberInteractionWithClipInstance(y, clipInstance);
 			}
 		}
 	}
@@ -1268,38 +1296,7 @@ doNewPress:
 						}
 					}
 
-					int32_t instanceEnd = clipInstance->pos + clipInstance->length;
-
-					if (instanceEnd <= squareStart) {
-						// If we tap once more on the same square of an already
-						// selected audio clip, let's snippety snip
-						if (pressedClipInstanceIndex == i && lastSquareStart == squareStart
-						    && clipInstance->clip->type == ClipType::AUDIO) {
-
-							clipInstance->length = (clipInstance->pos - (squareStart - 1));
-
-							Clip* oldClip = clipInstance->clip;
-
-							if (oldClip && !oldClip->isArrangementOnlyClip()
-							    && !oldClip->getCurrentlyRecordingLinearly()) {
-								actionLogger.deleteAllLogs();
-
-								int32_t error = arrangement.doUniqueCloneOnClipInstance(
-								    clipInstance, clipInstance->length - (squareStart - clipInstance->pos), true);
-
-								((AudioClip*)clipInstance->clip)->sampleHolder.startPos =
-								    (squareStart - clipInstance->pos);
-
-								if (error) {
-									display->displayError(error);
-								}
-								else {
-									uiNeedsRendering(this, 1 << y, 0);
-								}
-							}
-							rememberInteractionWithClipInstance(y, clipInstance, squareStart);
-							return;
-						}
+					if (clipInstance->pos + clipInstance->length <= squareStart) {
 						// Or, normal case where not recording to Clip. If it actually
 						// finishes to our left, we can still go ahead and make a new
 						// Instance here
@@ -1310,7 +1307,7 @@ doNewPress:
 					pressedClipInstanceIndex = i;
 
 					pressedHead = (clipInstance->pos >= squareStart);
-
+					rememberInteractionWithClipInstance(y, clipInstance);
 					actionOnDepress = true;
 				}
 
@@ -1468,7 +1465,7 @@ getItFromSection:
 					originallyPressedClipActualLength = clipInstance->length;
 				}
 
-				rememberInteractionWithClipInstance(y, clipInstance, squareStart);
+				rememberInteractionWithClipInstance(y, clipInstance);
 			}
 
 			// Already pressing - length edit
@@ -2086,7 +2083,7 @@ itsInvalid:
 	}
 
 	pressedClipInstanceXScrollWhenLastInValidPosition = xScroll;
-	rememberInteractionWithClipInstance(yPressedEffective, clipInstance, -1);
+	rememberInteractionWithClipInstance(yPressedEffective, clipInstance);
 
 	uiTimerManager.unsetTimer(TIMER_UI_SPECIFIC);
 	return true;
@@ -2439,7 +2436,7 @@ void ArrangerView::selectEncoderAction(int8_t offset) {
 
 		arrangement.rowEdited(output, clipInstance->pos, clipInstance->pos + clipInstance->length, NULL, clipInstance);
 
-		rememberInteractionWithClipInstance(yPressedEffective, clipInstance, -1);
+		rememberInteractionWithClipInstance(yPressedEffective, clipInstance);
 
 		// use root UI in case this is called from performance view
 		uiNeedsRendering(getRootUI(), 1 << yPressedEffective, 0);
@@ -2961,7 +2958,6 @@ static const uint32_t verticalEncoderUIModes[] = {UI_MODE_HOLDING_ARRANGEMENT_RO
                                                   UI_MODE_HOLDING_ARRANGEMENT_ROW, UI_MODE_VIEWING_RECORD_ARMING, 0};
 
 ActionResult ArrangerView::verticalEncoderAction(int32_t offset, bool inCardRoutine) {
-
 	if (Buttons::isButtonPressed(deluge::hid::button::Y_ENC)) {
 		if (currentUIMode == UI_MODE_NONE) {
 			currentSong->transpose(offset);
