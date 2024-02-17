@@ -113,6 +113,7 @@ public:
 	int32_t lastInteractedPos;
 	uint8_t lastInteractedSection;
 	ClipInstance* lastInteractedClipInstance;
+	int32_t lastSquareStart;
 
 	int32_t lastTickSquare;
 
@@ -137,7 +138,7 @@ private:
 	void deleteClipInstance(Output* output, int32_t clipInstanceIndex, ClipInstance* clipInstance, Action* action,
 	                        bool clearingWholeArrangement = false);
 	void clearArrangement();
-	void rememberInteractionWithClipInstance(int32_t yDisplay, ClipInstance* clipInstance);
+	void rememberInteractionWithClipInstance(int32_t yDisplay, ClipInstance* clipInstance, int32_t squareStart);
 	void deleteOutput();
 	void auditionEnded();
 	void goToSongView();

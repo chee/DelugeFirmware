@@ -34,6 +34,7 @@
 #include "gui/views/session_view.h"
 #include "gui/views/view.h"
 #include "gui/waveform/waveform_renderer.h"
+#include "hid/button.h"
 #include "hid/buttons.h"
 #include "hid/display/display.h"
 #include "hid/display/oled.h"
@@ -46,6 +47,7 @@
 #include "io/midi/device_specific/specific_midi_device.h"
 #include "io/midi/midi_engine.h"
 #include "memory/general_memory_allocator.h"
+#include "model/action/action.h"
 #include "model/action/action_logger.h"
 #include "model/clip/audio_clip.h"
 #include "model/clip/clip_instance.h"
@@ -77,6 +79,7 @@
 #include "util/functions.h"
 #include <cstdint>
 #include <new>
+#include <stdint.h>
 
 extern "C" {
 extern uint8_t currentlyAccessingCard;
@@ -1182,11 +1185,13 @@ void ArrangerView::deleteClipInstance(Output* output, int32_t clipInstanceIndex,
 	currentSong->deletingClipInstanceForClip(output, clip, action, !clearingWholeArrangement);
 }
 
-void ArrangerView::rememberInteractionWithClipInstance(int32_t yDisplay, ClipInstance* clipInstance) {
+void ArrangerView::rememberInteractionWithClipInstance(int32_t yDisplay, ClipInstance* clipInstance,
+                                                       int32_t squareStart) {
 	lastInteractedOutputIndex = yDisplay + currentSong->arrangementYScroll;
 	lastInteractedPos = clipInstance->pos;
 	lastInteractedSection = clipInstance->clip ? clipInstance->clip->section : 255;
 	lastInteractedClipInstance = clipInstance;
+	lastSquareStart = squareStart;
 }
 
 void ArrangerView::editPadAction(int32_t x, int32_t y, bool on) {
@@ -1215,7 +1220,7 @@ void ArrangerView::editPadAction(int32_t x, int32_t y, bool on) {
 						uiNeedsRendering(this, 1 << y, 0);
 					}
 				}
-				rememberInteractionWithClipInstance(y, clipInstance);
+				rememberInteractionWithClipInstance(y, clipInstance, squareStart);
 			}
 		}
 	}
@@ -1263,10 +1268,41 @@ doNewPress:
 						}
 					}
 
-					// Or, normal case where not recording to Clip. If it actually finishes to our left, we can still go
-					// ahead and make a new Instance here
 					int32_t instanceEnd = clipInstance->pos + clipInstance->length;
+
 					if (instanceEnd <= squareStart) {
+						// If we tap once more on the same square of an already
+						// selected audio clip, let's snippety snip
+						if (pressedClipInstanceIndex == i && lastSquareStart == squareStart
+						    && clipInstance->clip->type == ClipType::AUDIO) {
+
+							clipInstance->length = (clipInstance->pos - (squareStart - 1));
+
+							Clip* oldClip = clipInstance->clip;
+
+							if (oldClip && !oldClip->isArrangementOnlyClip()
+							    && !oldClip->getCurrentlyRecordingLinearly()) {
+								actionLogger.deleteAllLogs();
+
+								int32_t error = arrangement.doUniqueCloneOnClipInstance(
+								    clipInstance, clipInstance->length - (squareStart - clipInstance->pos), true);
+
+								((AudioClip*)clipInstance->clip)->sampleHolder.startPos =
+								    (squareStart - clipInstance->pos);
+
+								if (error) {
+									display->displayError(error);
+								}
+								else {
+									uiNeedsRendering(this, 1 << y, 0);
+								}
+							}
+							rememberInteractionWithClipInstance(y, clipInstance, squareStart);
+							return;
+						}
+						// Or, normal case where not recording to Clip. If it actually
+						// finishes to our left, we can still go ahead and make a new
+						// Instance here
 						goto makeNewInstance;
 					}
 
@@ -1432,7 +1468,7 @@ getItFromSection:
 					originallyPressedClipActualLength = clipInstance->length;
 				}
 
-				rememberInteractionWithClipInstance(y, clipInstance);
+				rememberInteractionWithClipInstance(y, clipInstance, squareStart);
 			}
 
 			// Already pressing - length edit
@@ -2050,7 +2086,7 @@ itsInvalid:
 	}
 
 	pressedClipInstanceXScrollWhenLastInValidPosition = xScroll;
-	rememberInteractionWithClipInstance(yPressedEffective, clipInstance);
+	rememberInteractionWithClipInstance(yPressedEffective, clipInstance, -1);
 
 	uiTimerManager.unsetTimer(TIMER_UI_SPECIFIC);
 	return true;
@@ -2403,7 +2439,7 @@ void ArrangerView::selectEncoderAction(int8_t offset) {
 
 		arrangement.rowEdited(output, clipInstance->pos, clipInstance->pos + clipInstance->length, NULL, clipInstance);
 
-		rememberInteractionWithClipInstance(yPressedEffective, clipInstance);
+		rememberInteractionWithClipInstance(yPressedEffective, clipInstance, -1);
 
 		// use root UI in case this is called from performance view
 		uiNeedsRendering(getRootUI(), 1 << yPressedEffective, 0);
