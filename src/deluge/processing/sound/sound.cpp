@@ -2962,7 +2962,7 @@ bool Sound::anyNoteIsOn() {
 }
 
 bool Sound::hasFilters() {
-	return (getSynthMode() != SynthMode::FM);
+	return true; //(getSynthMode() != SynthMode::FM);
 }
 
 void Sound::readParamsFromFile(ParamManagerForTimeline* paramManager, int32_t readAutomationUpToPos) {
