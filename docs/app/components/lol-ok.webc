@@ -1,0 +1,7 @@
+<p>
+	ok this is the lol-ok file
+</p>
+
+<script>
+	this.querySelector("p").textContent = "helo?"
+</script>

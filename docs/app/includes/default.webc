@@ -1,0 +1,48 @@
+<!doctype html>
+
+
+<div class="main-wrapper">
+	<aside class="sidebar">
+		<nav class="sidebar-inner">
+			<header></header>
+			<ol>
+				<li webc:for="item of collections.views">
+					<a @attributes="({href: item.url})" @text="item.data.title"></a>
+				</li>
+				<details class="submenu" open>
+					<summary>Clips</summary>
+					<ol>
+						<li webc:for="item of collections.clipViews">
+							<a @attributes="({href: item.url})" @text="item.data.title"></a>
+						</li>
+					</ol>
+				</details>
+			</ol>
+		</nav>
+	</aside>
+	<main @raw="content">
+	</main>
+</div>
+
+<style webc:keep>
+	:root {
+		--black: #000;
+		--white: #fff;
+		--blue: #33ccff;
+		--pink: #ff2a78;
+		--sans-serif: "Jost*", sans-serif;
+		--monospace: IBM Plex Mono, monospace;
+		--font-family: var(--sans-serif);
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	html {
+		background: var(--black);
+		color: var(--white);
+		font-family: var(--sans-serif);
+		font-size: 1.2em;
+	}
+</style>
