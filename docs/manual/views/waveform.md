@@ -1,4 +1,6 @@
 ---
-title: Waveform view
-tags: views
+title: Waveform View
+navigation:
+  title: Waveform
+  order: 4
 ---

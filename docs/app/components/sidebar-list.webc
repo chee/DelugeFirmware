@@ -1,0 +1,9 @@
+<ol>
+	<li webc:for="item of items" :aria-current="item.url == page.url ? 'page' : 'false'">
+		<details webc:if="item.children.length">
+			<summary><a :href="item.url" @text="item.title"></a></summary>
+		</details>
+		<!-- <sidebar-list items="items.children"></sidebar-list><!--  --> -->
+		<a webc:else :href="item.url" @text="item.title" ></a>
+	</li>
+</ol>

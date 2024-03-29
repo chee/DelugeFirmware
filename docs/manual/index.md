@@ -1,11 +1,10 @@
 ---
 layout: default
+title: Overview
 ---
 
-hello
+# Deluge Community Manual
 
-change
+##  some feature
 
-<lol-ok a="lol"></lol-ok>
-
-this is a change
+This was <added-in>c1.0.1</added-in> lol

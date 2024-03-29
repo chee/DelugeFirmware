@@ -1,4 +1,6 @@
 ---
-title: Kit clip view
-tags: clipviews
+title: Kit Clip View
+navigation:
+  key: Kit
+  parent: Clips
 ---

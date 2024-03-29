@@ -1,4 +1,6 @@
 ---
-title: Song view
-order: 1
+title: Song View
+navigation:
+  title: Song
+  order: 1
 ---

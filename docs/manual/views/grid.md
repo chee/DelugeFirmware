@@ -1,4 +1,6 @@
 ---
-title: Grid view
-tags: views
+title: Grid View
+navigation:
+  title: Grid
+  order: 2
 ---

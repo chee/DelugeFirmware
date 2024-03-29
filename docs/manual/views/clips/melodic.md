@@ -1,4 +1,3 @@
 ---
-title: Melodic clip view
-tags: clipviews
+title: Melodic clip
 ---

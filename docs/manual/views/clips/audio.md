@@ -1,4 +1,3 @@
 ---
-title: Audio clip view
-tags: clipviews
+title: Audio clip
 ---

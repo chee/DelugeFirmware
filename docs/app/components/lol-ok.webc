@@ -1,7 +1,12 @@
-<p>
-	ok this is the lol-ok file
-</p>
+<button>hello</button>
 
-<script>
-	this.querySelector("p").textContent = "helo?"
-</script>
+<style>
+	button {
+		background: black   ;
+		color: orange;
+		border: 4px solid cyan;
+	}
+	:host {
+		display: inline-block;
+	}
+</style>

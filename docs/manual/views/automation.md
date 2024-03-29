@@ -1,4 +1,6 @@
 ---
-title: Automation view
-tags: views
+title: Automation View
+navigation:
+  title: Automation
+  order: 4
 ---

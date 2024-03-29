@@ -1,23 +1,16 @@
 <!doctype html>
-
-
+<meta charset="utf-8">
+<title webc:if="title" @raw="`${title} | Deluge Community Manual`"></title>
+<title webc:else>Deluge Community Manual</title>
+<!-- <link rel="stylesheet" :href="getBundleFileUrl('css')" webc:keep> -->
+<style @raw="getBundle('css')" webc:keep></style>
+<!-- todo move sidebar to its own component -->
 <div class="main-wrapper">
 	<aside class="sidebar">
-		<nav class="sidebar-inner">
-			<header></header>
-			<ol>
-				<li webc:for="item of collections.views">
-					<a @attributes="({href: item.url})" @text="item.data.title"></a>
-				</li>
-				<details class="submenu" open>
-					<summary>Clips</summary>
-					<ol>
-						<li webc:for="item of collections.clipViews">
-							<a @attributes="({href: item.url})" @text="item.data.title"></a>
-						</li>
-					</ol>
-				</details>
-			</ol>
+		<nav class="sidebar-content">
+			<script webc:type="js">
+				navigation.html(navigation.create($data.collections.all), page.url, navigation.html)
+			</script>
 		</nav>
 	</aside>
 	<main @raw="content">
@@ -32,7 +25,10 @@
 		--pink: #ff2a78;
 		--sans-serif: "Jost*", sans-serif;
 		--monospace: IBM Plex Mono, monospace;
+
 		--font-family: var(--sans-serif);
+		--fill: var(--black);
+		--line: var(--white);
 	}
 
 	* {
@@ -40,9 +36,61 @@
 	}
 
 	html {
-		background: var(--black);
-		color: var(--white);
+		background: var(--fill);
+		color: var(--line);
 		font-family: var(--sans-serif);
 		font-size: 1.2em;
+	}
+
+	body {
+		margin: 0;
+	}
+
+	.main-wrapper {
+		display: flex;
+		gap: 1em;
+	}
+
+	.sidebar {
+		width: 12em;
+		font-size: .9rem;
+		padding: 0 1em;
+	}
+
+	.sidebar summary {
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+	.sidebar summary::marker {
+		display: none;
+	}
+
+	.sidebar a {
+		text-decoration: none;
+		color: var(--white);
+		display: block;
+		height: 100%;
+		width: 100%;
+		padding: .2em .5em;
+		border-radius: 4px;
+	}
+
+	.sidebar ol {
+		list-style: none;
+		padding: 0;
+	}
+
+	.sidebar [aria-current="page"] {
+		background: var(--pink);
+		font-weight: bold;
+	}
+
+	.sidebar ol ol {
+		padding-left: 1em;
+	}
+
+	main {
+		width: 80ex;
 	}
 </style>

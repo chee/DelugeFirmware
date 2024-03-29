@@ -1,3 +1,6 @@
 ---
-title: Arranger view
+title: Arranger View
+navigation:
+  title: Arranger
+  order: 3
 ---
