@@ -41,22 +41,24 @@ export function create(collection) {
 
 export function html(navigation, pageURL, toHTML) {
 	return (
-		navigation.reduce((html, item) => {
-			let title = item.url
-				? `<a ${item.url == pageURL ? 'aria-current="page"' : ""} href="${
-						item.url
-				  }">${item.title}</a>`
-				: item.title ||
-				  item.key.replace(
-						/\w\S*/g,
-						t => t[0].toUpperCase() + t.slice(1).toLowerCase()
-				  )
-			return (
-				html +
-				`<li>${title}${
-					item.children?.length ? toHTML(item.children, pageURL, toHTML) : ""
-				}</li>`
-			)
-		}, `<ol>`) + `</ol>`
+		navigation
+			.sort((a, b) => a.order - b.order)
+			.reduce((html, item) => {
+				let title = item.url
+					? `<a ${item.url == pageURL ? 'aria-current="page"' : ""} href="${
+							item.url
+					  }">${item.title}</a>`
+					: item.title ||
+					  item.key.replace(
+							/\w\S*/g,
+							t => t[0].toUpperCase() + t.slice(1).toLowerCase()
+					  )
+				return (
+					html +
+					`<li>${title}${
+						item.children?.length ? toHTML(item.children, pageURL, toHTML) : ""
+					}</li>`
+				)
+			}, `<ol>`) + `</ol>`
 	)
 }
