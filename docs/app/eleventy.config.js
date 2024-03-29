@@ -1,6 +1,6 @@
 import webc from "@11ty/eleventy-plugin-webc"
-import navigation from "@11ty/eleventy-navigation"
 import md from "markdown-it"
+import {EleventyHtmlBasePlugin as base} from "@11ty/eleventy"
 import mdAnchor from "markdown-it-anchor"
 
 /**
@@ -18,7 +18,7 @@ export default config => {
 			"npm:@11ty/eleventy-img/*.webc",
 		],
 	})
-	config.addPlugin(navigation)
+	config.addPlugin(base)
 	config.addFilter("attr", val => {
 		return !(val == null || val === false || val == "false")
 	})
