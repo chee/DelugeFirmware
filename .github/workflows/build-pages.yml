@@ -47,8 +47,7 @@ jobs:
           cache: npm
           cache-dependency-path: docs/app/package-lock.json
       - run: npm ci --prefix=docs/app
-      - run: npm run build --prefix=docs/app -- --pathPrefix=/DelugeFirmware/manual/
-      - run: mv docs/app/_site/ pages/public/manual/
+      - run: npm run build --prefix=docs/app -- --pathprefix=/DelugeFirmware/manual/ --output=pages/public/manual
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
