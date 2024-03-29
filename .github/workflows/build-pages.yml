@@ -41,9 +41,11 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: use node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: 20.x
+          cache: npm
+          cache-dependency-path: docs/app/package-lock.json
       - run: npm ci --prefix=docs/app
       - run: npm build --prefix=docs/app -- --pathPrefix=/DelugeFirmware/manual/
       - run: mv docs/app/_site/ pages/public/manual/
