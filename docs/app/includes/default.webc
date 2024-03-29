@@ -67,7 +67,8 @@
 		display: none;
 	}
 
-	.sidebar a {
+	.sidebar a,
+	.sidebar li > span {
 		text-decoration: none;
 		color: var(--white);
 		display: block;
@@ -89,6 +90,10 @@
 
 	.sidebar ol ol {
 		padding-left: 1em;
+	}
+
+	.sidebar-content > ol > li > ol {
+		padding-left: 0;
 	}
 
 	main {

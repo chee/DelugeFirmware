@@ -34,6 +34,7 @@ export function create(collection) {
 			)
 		target.order = item.data.navigation.order || 0
 		target.url = item.url
+		target.link = item.data.navigation.link !== false
 	}
 
 	return navigation
@@ -44,15 +45,18 @@ export function html(navigation, pageURL, toHTML) {
 		navigation
 			.sort((a, b) => a.order - b.order)
 			.reduce((html, item) => {
-				let title = item.url
-					? `<a ${item.url == pageURL ? 'aria-current="page"' : ""} href="${
-							item.url
-					  }">${item.title}</a>`
-					: item.title ||
-					  item.key.replace(
-							/\w\S*/g,
-							t => t[0].toUpperCase() + t.slice(1).toLowerCase()
-					  )
+				let name =
+					item.title ||
+					item.key.replace(
+						/\w\S*/g,
+						t => t[0].toUpperCase() + t.slice(1).toLowerCase()
+					)
+				let title =
+					item.url && item.link
+						? `<a ${item.url == pageURL ? 'aria-current="page"' : ""} href="${
+								item.url
+						  }">${name}</a>`
+						: `<span>${name}</span>`
 				return (
 					html +
 					`<li>${title}${
