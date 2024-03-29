@@ -2,8 +2,7 @@
 <meta charset="utf-8">
 <title webc:if="title" @raw="`${title} | Deluge Community Manual`"></title>
 <title webc:else>Deluge Community Manual</title>
-<!-- <link rel="stylesheet" :href="getBundleFileUrl('css')" webc:keep> -->
-<style @raw="getBundle('css')" webc:keep></style>
+<link rel="stylesheet" :href="getBundleFileUrl('css')" webc:keep>
 <!-- todo move sidebar to its own component -->
 <div class="main-wrapper">
 	<aside class="sidebar">

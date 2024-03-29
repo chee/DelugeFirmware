@@ -15,7 +15,7 @@ Press AFFECT ENTIRE to disable:
 
 <affect-entire song></affect-entire>
 
-Press **CLIP** to enter [clip view](/clips/).
+Press **CLIP** to enter [clip view](/views/clips/).
 
 <affect-entire clip></affect-entire>
 
