@@ -17,7 +17,9 @@ export default config => {
 		],
 	})
 	config.addPlugin(navigation)
-	// config.addFilter("addNavigationAria", addNavigationAria)
+	config.addFilter("attr", val => {
+		return !(val == null || val === false || val == "false")
+	})
 	return {
 		dir: {
 			input: "../manual/",

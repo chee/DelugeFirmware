@@ -23,6 +23,8 @@
 		--white: #fff;
 		--blue: #33ccff;
 		--pink: #ff2a78;
+		--orange: #ffbc34;
+		--grey: #cccccc;
 		--sans-serif: "Jost*", sans-serif;
 		--monospace: IBM Plex Mono, monospace;
 
@@ -92,5 +94,9 @@
 
 	main {
 		width: 80ex;
+	}
+
+	main a {
+		color: var(--blue);
 	}
 </style>

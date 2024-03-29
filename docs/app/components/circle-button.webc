@@ -1,0 +1,56 @@
+<template webc:root class="circle-button">
+	<div
+		:class="`circle-button-button ${on == 'blinking' ? 'blinking' : ''}`"
+		:style="`background: var(--${attr(on) ? color : 'grey'})`">
+	</div>
+	<div class="labels">
+		<span class="label"><slot></slot></span>
+		<span class="alt-label" slot="alt"></span>
+	</div>
+</template>
+
+<style>
+	@keyframes blink {
+		0% {
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
+	}
+
+	circle-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 4px;
+	}
+
+	.circle-button-button {
+		border-radius: 100%;
+		height: 24px;
+		width: 24px;
+		display: inline-block;
+	}
+
+	.circle-button-button.blinking {
+		animation: blink 1s steps(1) infinite;
+	}
+
+	.labels {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.label, .alt-label {
+		text-transform: UPPERCASE;
+		background: var(--label-bg);
+		color: var(--label-fg);
+		font-size: 14px;
+	}
+
+	.alt-label {
+		background: var(--label-fg);
+		color: var(--label-bg);
+	}
+</style>
