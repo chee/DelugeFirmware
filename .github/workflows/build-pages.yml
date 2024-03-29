@@ -44,9 +44,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 20.x
-          cache: 'npm'
+          cache: "npm"
       - run: npm ci --prefix=docs/app
-      - run: npm build --prefix=docs/app
+      - run: npm build --prefix=docs/app -- --pathPrefix=/DelugeFirmware/manual/
+      - run: mv docs/app/_site/ pages/public/manual/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
