@@ -1,5 +1,7 @@
 import webc from "@11ty/eleventy-plugin-webc"
 import navigation from "@11ty/eleventy-navigation"
+import md from "markdown-it"
+import mdAnchor from "markdown-it-anchor"
 
 /**
  * @param {import("@11ty/eleventy").UserConfig} config
@@ -20,6 +22,7 @@ export default config => {
 	config.addFilter("attr", val => {
 		return !(val == null || val === false || val == "false")
 	})
+	config.setLibrary("md", md({html: true}).use(mdAnchor))
 	return {
 		dir: {
 			input: "../manual/",
