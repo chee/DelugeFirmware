@@ -7,7 +7,6 @@
 <style>
 	seven-segment {
 		font-family: var(--7seg-font);
-		font-size: 2em;
 		width: 4ch;
 		text-align: right;
 		background: var(--7seg-fill);
