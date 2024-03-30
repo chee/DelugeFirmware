@@ -3,6 +3,8 @@ import md from "markdown-it"
 import {EleventyHtmlBasePlugin as base} from "@11ty/eleventy"
 import mdAnchor from "markdown-it-anchor"
 import mdDeluge from "./markdown-it-deluge.js"
+import {EleventyRenderPlugin as render} from "@11ty/eleventy"
+import bundler from "@11ty/eleventy-plugin-bundle"
 
 /**
  * @param {import("@11ty/eleventy").UserConfig} config
@@ -12,6 +14,8 @@ export default config => {
 		port: 1234,
 		watch: ["components/**/*.webc", "_site/**/*.css"],
 	})
+	config.addPlugin(render)
+	config.addPlugin(bundler)
 	let webcOptions = {
 		components: [
 			"components/**/*.webc",
@@ -22,6 +26,15 @@ export default config => {
 	}
 	config.addPlugin(webc, webcOptions)
 
+	config.addFilter("sortByOrder", function (list) {
+		return list.sort((a, b) => a.order - b.order)
+	})
+	config.addFilter("toTitleCase", function (string) {
+		return string.replace(
+			/\w\S*/g,
+			t => t[0].toUpperCase() + t.slice(1).toLowerCase()
+		)
+	})
 	config.addPlugin(base)
 	config.addFilter("attr", val => {
 		return !(val == null || val === false || val == "false")
