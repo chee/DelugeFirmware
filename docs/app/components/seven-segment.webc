@@ -1,6 +1,6 @@
 <template webc:root>
 <div>
-	<slot></slot>
+	<slot @text="seg"></slot>
 </div>
 </template>
 
