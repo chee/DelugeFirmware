@@ -1,0 +1,24 @@
+<template webc:root title="TEMPO">
+	<svg viewBox="0 0 100 100">
+		<circle cx="50" cy="50" r="40"/>
+		<text x="14" y="60">TEMPO</text>
+	</svg>
+</template>
+
+<style>
+	tempo-encoder svg {
+		height: 2em;
+	}
+
+	tempo-encoder circle {
+		stroke: var(--black-encoder-line);
+		stroke-width: 4;
+		fill: var(--black-encoder-fill);
+	}
+
+	tempo-encoder text {
+		stroke: var(--black-encoder-line);
+		fill: var(--black-encoder-line);
+		font-size: 1.1em;
+	}
+</style>
