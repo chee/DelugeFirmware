@@ -3,7 +3,9 @@ title: Overview
 ---
 ##  some feature
 
-This was <added-in>c1.0.1</added-in>.
+<added-in>c1.0.1</added-in>
+
+testing [SHIFT] + (UPPER) + (SCROLLV) + turn (SCROLLH) + press (SELECT)?
 
 Make sure you are in song view with AFFECT ENTIRE enabled:
 
