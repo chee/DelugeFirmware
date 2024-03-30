@@ -29,7 +29,7 @@ in the new clip that would have been recently triggered and plays them.  This
 allows that feature to be toggled.
 
 ### |unus| Delete unused kit rows
-Toggle the [/views/clip/kit#delete-unused](delete unused kit rows shortcut).
+Toggle the [delete unused kit rows shortcut](/views/clip/kit#delete-unused).
 
 ### |dela| Alternative golden knob delay params
 Toggle gold knob button actions for delay between `UPPER` PingPong `LOWER` Type +
