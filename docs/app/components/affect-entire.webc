@@ -1,7 +1,7 @@
 <template webc:root>
-	<div class="affect-entire">
+	<span class="affect-entire">
 		<affect-entire-button :on="on"></affect-entire-button>
-	</div>
+	</span>
 
 	<svg class="lines" width="100%" height="100%" viewBox="0 0 100 100">
 		<line
@@ -22,12 +22,12 @@
 				stroke="white"/>
 	</svg>
 
-	<div class="song-and-clip">
+	<span class="song-and-clip">
 		<song-button :on="song" webc:keep>
 		</song-button>
 		<clip-button :on="clip" webc:keep>
 		</clip-button>
-	</div>
+	</span>
 </template>
 
 <style>
@@ -38,7 +38,7 @@
 		height: 120px;
 	}
 
-	affect-entire-button {
+	.affect-entire {
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
