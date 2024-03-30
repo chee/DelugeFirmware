@@ -1,13 +1,15 @@
 <span class="added-in">
-	Added in <b><slot></slot></b>
+	added in <b><slot></slot></b>
 </span>
 
 
 <style>
 	.added-in {
-		background: white;
-		color: var(--pink);
-		border: 2px solid var(--pink);
-		padding: 0 1em;
+		background: color-mix(in srgb, var(--line) 95%, var(--fill));
+		color: var(--fill);
+		border: 1px solid color-mix(in srgb, var(--line) 20%, var(--fill));
+		padding: 0 .24em;
+		letter-spacing: -1px;
+		border-radius: 4px;
 	}
 </style>
