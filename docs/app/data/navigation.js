@@ -28,6 +28,13 @@ export function create(collection) {
 		target.order = item.data.navigation.order || 0
 		target.url = item.url
 		target.link = item.data.navigation.link !== false
+		target.seg = item.data.navigation.seg
+		target.name =
+			target.title ||
+			target.key.replace(
+				/\w\S*/g,
+				t => t[0].toUpperCase() + t.slice(1).toLowerCase()
+			)
 	}
 
 	return navigation
@@ -38,18 +45,12 @@ export function html(navigation, pageURL) {
 		navigation
 			.sort((a, b) => a.order - b.order)
 			.reduce((html, item) => {
-				let name =
-					item.title ||
-					item.key.replace(
-						/\w\S*/g,
-						t => t[0].toUpperCase() + t.slice(1).toLowerCase()
-					)
 				let title =
 					item.url && item.link
 						? `<a ${item.url == pageURL ? 'aria-current="page"' : ""} href="${
 								item.url
-						  }">${name}</a>`
-						: `<span>${name}</span>`
+						  }">${item.name}</a>`
+						: `<span>${item.name}</span>`
 
 				if (item.children?.length) {
 					return (
