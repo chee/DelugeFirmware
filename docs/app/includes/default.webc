@@ -12,16 +12,28 @@
 </header>
 <div class="main-wrapper">
 	<aside class="sidebar">
-		<nav class="sidebar-content">
-			<script webc:type="js">
-				navigation.html(navigation.create($data.collections.all), page.url, navigation.html)
-			</script>
+		<nav id="navigation" class="sidebar-content">
+			<label id="navigation-toggle">
+				<input type="checkbox">
+				Menu
+			</label>
+			<div id="navigation-items" class="sidebar-items">
+				<script webc:type="js">
+					navigation.html(
+						navigation.create($data.collections.all),
+						page.url,
+						navigation.html
+					)
+				</script>
+			</div>
 		</nav>
 	</aside>
-	<main @raw="content">
+	<main>
 		<header webc:if="title">
 			<h1 @text="title"></h1>
 		</header>
+		<article @raw="content">
+		</article>
 	</main>
 </div>
 
@@ -118,6 +130,43 @@
 		gap: 1em;
 	}
 
+	#navigation-toggle {
+		display: none;
+	}
+
+	@media screen and (max-width: 768px) {
+		#navigation-toggle {
+			display: inline-flex;
+			border: 2px solid;
+			cursor: pointer;
+			padding: 0.5em 1em;
+		}
+
+		#navigation-toggle input {
+			width: 1px;
+			height: 1px;
+			opacity: 0;
+			position: absolute;
+		}
+
+		#navigation-toggle:has(:checked) {
+			background: var(--line);
+			color: var(--fill);
+		}
+
+		.main-wrapper {
+			display: block;
+		}
+
+		#navigation-items {
+			display: none;
+		}
+
+		#navigation-toggle:has(:checked) ~ #navigation-items {
+			display: block;
+		}
+	}
+
 	.sidebar {
 		width: 12em;
 		font-size: .9rem;
@@ -147,6 +196,7 @@
 	.sidebar ol {
 		list-style: none;
 		padding: 0;
+		margin: 0;
 	}
 
 	.sidebar [aria-current="page"] {
@@ -164,6 +214,10 @@
 
 	main {
 		width: 80ex;
+	}
+
+	main h1:first-child {
+		margin: 0;
 	}
 
 	main a {
