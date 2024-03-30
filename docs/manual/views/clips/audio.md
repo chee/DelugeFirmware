@@ -1,3 +1,5 @@
 ---
-title: Audio clip
+title: Audio Clip View
+navigation:
+  title: Audio
 ---

@@ -1,3 +1,5 @@
 ---
-title: Melodic clip
+title: Melodic Instrument Clip View
+navigation:
+  title: Melodic
 ---
