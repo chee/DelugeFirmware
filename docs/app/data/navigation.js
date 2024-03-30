@@ -1,10 +1,3 @@
-// function findChildren(collection, parent) {
-// 	return collection.filter(item => {
-// 		let url = item.url.slice(0, -1)
-// 		return url.slice(0, url.lastIndexOf("/")) == parent.url.slice(0, -1)
-// 	})
-// }
-
 export function create(collection) {
 	let navigation = [{}]
 
@@ -40,7 +33,7 @@ export function create(collection) {
 	return navigation
 }
 
-export function html(navigation, pageURL, toHTML) {
+export function html(navigation, pageURL) {
 	return (
 		navigation
 			.sort((a, b) => a.order - b.order)
@@ -57,12 +50,17 @@ export function html(navigation, pageURL, toHTML) {
 								item.url
 						  }">${name}</a>`
 						: `<span>${name}</span>`
-				return (
-					html +
-					`<li>${title}${
-						item.children?.length ? toHTML(item.children, pageURL, toHTML) : ""
-					}</li>`
-				)
+
+				if (item.children?.length) {
+					return (
+						html +
+						`<li><details open><summary>${title}</summary>` +
+						this.html(item.children, pageURL) +
+						`</details></li>`
+					)
+				} else {
+					return html + `<li>${title}</li>`
+				}
 			}, `<ol>`) + `</ol>`
 	)
 }
