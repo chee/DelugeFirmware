@@ -1,0 +1,17 @@
+<template webc:root>
+<div>
+	<slot></slot>
+</div>
+</template>
+
+<style>
+	seven-segment {
+		font-family: var(--7seg-font);
+		font-size: 2rem;
+		width: 4ch;
+		text-align: right;
+		background: var(--7seg-fill);
+		color: var(--7seg-line);
+		display: inline-block;
+	}
+</style>

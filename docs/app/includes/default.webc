@@ -21,19 +21,43 @@
 		--black: #000;
 		--white: #fff;
 		--blue: #33ccff;
+		--red: #ff4444;
+		--green: #77ff99;
+		--cyan: #44ffef;
+		--yellow: #ffef33;
 		--pink: #ff2a78;
+		--magenta: #f70cf7;
 		--orange: #ffbc34;
 		--grey: #cccccc;
 		--sans-serif: "Jost*", sans-serif;
 		--monospace: IBM Plex Mono, monospace;
+		--7seg-font: "7seg";
 
 		--font-family: var(--sans-serif);
 		--fill: var(--black);
 		--line: var(--white);
+
+		--label-fill: var(--black);
+		--label-line: var(--white);
+
+		--7seg-fill: var(--black);
+		--7seg-line: var(--red);
 	}
 
 	* {
 		box-sizing: border-box;
+	}
+
+	@font-face {
+		font-family: "Jost*";
+		src: url("/fonts/jost.ttf") format("truetype");
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "7seg";
+		src: url("/fonts/7seg.ttf") format("truetype");
+		font-display: swap;
 	}
 
 	html {

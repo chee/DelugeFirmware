@@ -22,7 +22,7 @@ export default config => {
 	config.addFilter("attr", val => {
 		return !(val == null || val === false || val == "false")
 	})
-	config.setLibrary("md", md({html: true}).use(mdAnchor))
+	config.setLibrary("md", md({html: true, breaks: false}).use(mdAnchor))
 	return {
 		dir: {
 			input: "../manual/",

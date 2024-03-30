@@ -1,0 +1,14 @@
+<circle-button
+	color="orange"
+	@attributes>
+	affect entire
+</circle-button>
+
+<style>
+	affect-entire-button {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 120px;
+	}
+</style>
