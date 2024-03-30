@@ -1,0 +1,18 @@
+<template webc:root>
+	<deluge-dots></deluge-dots> deluge
+</template>
+
+<style>
+	deluge-logo {
+		font-weight: 900;
+		letter-spacing: -1px;
+		white-space: nowrap;
+		display: flex;
+		align-items: center;
+		gap: 0.25ex;
+	}
+
+	deluge-logo svg {
+		height: 1em;
+	}
+</style>

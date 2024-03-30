@@ -4,6 +4,12 @@
 <title webc:else>Deluge Community Manual</title>
 <link rel="stylesheet" :href="getBundleFileUrl('css')" webc:keep>
 <!-- todo move sidebar to its own component -->
+<header class="main-header">
+	<a href="/">
+		<deluge-logo></deluge-logo>
+		<span>community manual</span>
+	</a>
+</header>
 <div class="main-wrapper">
 	<aside class="sidebar">
 		<nav class="sidebar-content">
@@ -13,6 +19,9 @@
 		</nav>
 	</aside>
 	<main @raw="content">
+		<header webc:if="title">
+			<h1 @text="title"></h1>
+		</header>
 	</main>
 </div>
 
@@ -29,7 +38,7 @@
 		--magenta: #f70cf7;
 		--orange: #ffbc34;
 		--grey: #cccccc;
-		--sans-serif: "Jost*", sans-serif;
+		--sans-serif: "Karla", "Franklin Gothic", sans-serif;
 		--monospace: IBM Plex Mono, monospace;
 		--7seg-font: "7seg";
 
@@ -48,10 +57,21 @@
 		box-sizing: border-box;
 	}
 
+	p:empty {
+		display: none;
+	}
+
 	@font-face {
-		font-family: "Jost*";
-		src: url("/fonts/jost.ttf") format("truetype");
+		font-family: "Karla";
+		src: url("/fonts/karla.ttf") format("truetype");
 		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Karla";
+		src: url("/fonts/karla-italic.ttf") format("truetype");
+		font-display: swap;
+		font-style: italic;
 	}
 
 	@font-face {
@@ -69,6 +89,28 @@
 
 	body {
 		margin: 0;
+	}
+
+	.main-header {
+		padding: .5em;
+		font-size: 1.2em;
+	}
+
+	.main-header img {
+		max-height: 1em;
+	}
+
+	.main-header a {
+		text-decoration: none;
+		font-weight: 300;
+		color: white;
+		display: flex;
+		gap: 7px;
+		align-items: center;
+	}
+
+	.main-header span {
+		letter-spacing: -1px;
 	}
 
 	.main-wrapper {
