@@ -38,6 +38,13 @@
 		height: 120px;
 	}
 
+	affect-entire-button {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 120px;
+	}
+
 	.lines {
 		position: absolute;
 		width: 60px;

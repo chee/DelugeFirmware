@@ -1,7 +1,7 @@
 <template webc:root>
-<div>
+<span>
 	<slot @text="seg"></slot>
-</div>
+</span>
 </template>
 
 <style>

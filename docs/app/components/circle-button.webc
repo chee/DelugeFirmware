@@ -1,12 +1,12 @@
 <template webc:root>
-	<div
+	<span
 		:class="`circle-button-button ${on == 'blinking' ? 'blinking' : ''}`"
 		:style="`background: var(--${attr(on) ? color : 'grey'})`">
-	</div>
-	<div class="labels">
+	</span>
+	<span class="labels">
 		<span class="label"><slot></slot></span>
 		<span class="alt-label" @text="alt"><slot name="alt"></slot></span>
-	</div>
+	</span>
 </template>
 <style>
 	@keyframes blink {

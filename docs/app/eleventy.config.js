@@ -2,6 +2,8 @@ import webc from "@11ty/eleventy-plugin-webc"
 import md from "markdown-it"
 import {EleventyHtmlBasePlugin as base} from "@11ty/eleventy"
 import mdAnchor from "markdown-it-anchor"
+import mdDeluge from "./markdown-it-deluge.js"
+import webcTransform from "./webc-transform.js"
 
 /**
  * @param {import("@11ty/eleventy").UserConfig} config
@@ -11,13 +13,16 @@ export default config => {
 		port: 1234,
 		watch: ["components/**/*.webc", "_site/**/*.css"],
 	})
-	config.addPlugin(webc, {
+	let webcOptions = {
 		components: [
 			"components/**/*.webc",
 			// todo
 			"npm:@11ty/eleventy-img/*.webc",
 		],
-	})
+		useTransform: true,
+	}
+	config.addPlugin(webc, webcOptions)
+
 	config.addPlugin(base)
 	config.addFilter("attr", val => {
 		return !(val == null || val === false || val == "false")
@@ -27,10 +32,13 @@ export default config => {
 		md({
 			html: true,
 			breaks: false,
-		}).use(mdAnchor)
+		})
+			.use(mdAnchor)
+			.use(mdDeluge)
 	)
 	config.addPassthroughCopy("fonts")
 	config.addPassthroughCopy("images")
+
 	return {
 		dir: {
 			input: "../manual/",
@@ -38,7 +46,7 @@ export default config => {
 			includes: "../app/includes",
 			data: "../app/data",
 		},
-		htmlTemplateEngine: "webc",
-		markdownTemplateEngine: "webc",
+		// htmlTemplateEngine: "webc",
+		// markdownTemplateEngine: "webc",
 	}
 }

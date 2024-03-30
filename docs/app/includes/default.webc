@@ -63,6 +63,9 @@
 
 		--7seg-fill: var(--black);
 		--7seg-line: var(--red);
+
+		--scroll-encoder-fill: #333;
+		--scroll-encoder-line: var(--white);
 	}
 
 	* {
