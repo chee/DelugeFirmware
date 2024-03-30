@@ -46,6 +46,10 @@ export default function (md) {
 				let tagname = name.toLowerCase().replace(/ \/? ?/, "-") + "-encoder"
 				if (tagname == "output-volume-encoder") {
 					tagname = "output-volume-pot"
+				} else if (tagname == "scrollv-encoder") {
+					tagname = "scroll-v-encoder"
+				} else if (tagname == "scrollh-encoder") {
+					tagname = "scroll-h-encoder"
 				}
 				/** @type {import("markdown-it").Token} */
 				let token
