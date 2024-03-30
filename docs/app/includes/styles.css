@@ -178,7 +178,7 @@ body {
 }
 
 main {
-	width: 80ex;
+	max-width: 80ex;
 }
 
 main h1:first-child {
