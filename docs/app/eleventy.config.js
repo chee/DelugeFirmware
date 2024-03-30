@@ -3,7 +3,6 @@ import md from "markdown-it"
 import {EleventyHtmlBasePlugin as base} from "@11ty/eleventy"
 import mdAnchor from "markdown-it-anchor"
 import mdDeluge from "./markdown-it-deluge.js"
-import webcTransform from "./webc-transform.js"
 
 /**
  * @param {import("@11ty/eleventy").UserConfig} config
