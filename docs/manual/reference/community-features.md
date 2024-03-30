@@ -7,7 +7,6 @@ navigation:
 - Press [SHIFT] and + turn (SCROLL◄►) clockwise to 'stretch' the audio length
   longer.
 
-
 ## |FEAT| Community Features
 
 ### |DRUM| Drum Randomizer
