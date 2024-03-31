@@ -83,12 +83,12 @@ Here you can turn and press (SELECT) to choose:
 For more info on how MIDI Follow works in a given view, see that view's MIDI
 Follow section:
 
-- [Song view](/views/song#midi-follow)
-- [Grid view](/views/grid#midi-follow)
-- [Audio clip view](/views/clips/audio#midi-follow)
-- [Melodic clip view](/views/clips/melodic#midi-follow)
-- [Kit view](/views/clips/kit#midi-follow)
-- [Arranger view](/views/arranger#midi-follow)
+- [Song view ▸ MIDI Follow](/views/song#midi-follow)
+- [Grid view ▸ MIDI Follow](/views/grid#midi-follow)
+- [Audio clip view ▸ MIDI Follow](/views/clips/audio#midi-follow)
+- [Melodic clip view ▸︎ MIDI Follow](/views/clips/melodic#midi-follow)
+- [Kit clip view ▸ MIDI Follow](/views/clips/kit#midi-follow)
+- [Arranger view ▸ MIDI Follow](/views/arranger#midi-follow)
 
 ## Advanced use
 
