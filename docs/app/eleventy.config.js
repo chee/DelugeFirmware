@@ -6,7 +6,8 @@ import mdDeluge from "./markdown-it-deluge.js"
 import {EleventyRenderPlugin as render} from "@11ty/eleventy"
 import bundler from "@11ty/eleventy-plugin-bundle"
 import syntaxHighlighting from "@11ty/eleventy-plugin-syntaxhighlight"
-
+import dirstats from "@11ty/eleventy-plugin-directory-output"
+import nav from "@11ty/eleventy-navigation"
 /**
  * @param {import("@chee/eleventy-stable").UserConfig} config
  */
@@ -15,7 +16,10 @@ export default config => {
 		port: 1234,
 		watch: ["components/**/*.webc", "_site/**/*.css"],
 	})
+	config.setQuietMode(true)
+	config.addPlugin(dirstats)
 	config.addPlugin(render)
+	config.addPlugin(nav)
 	config.addPlugin(bundler, {
 		hoistDuplicateBundlesFor: ["css", "js"],
 	})
@@ -57,15 +61,15 @@ export default config => {
 	)
 	config.addPassthroughCopy("fonts")
 	config.addPassthroughCopy("images")
-
+	config.addPassthroughCopy("css")
 	return {
 		dir: {
-			input: "../manual/",
+			input: "../manual",
 			output: "_site",
 			includes: "../app/includes",
 			data: "../app/data",
 		},
-		htmlTemplateEngine: "webc",
+ 		htmlTemplateEngine: "webc",
 		markdownTemplateEngine: "liquid",
 	}
 }

@@ -1,6 +1,6 @@
 ---
-title: Views
+title: Views overview
 navigation:
   order: 1
-  link: false
+  title: Views
 ---

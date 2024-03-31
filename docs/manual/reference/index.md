@@ -1,6 +1,6 @@
 ---
-title: Reference
+title: Reference overview
 navigation:
   order: 99
-  link: false
+  title: Reference
 ---

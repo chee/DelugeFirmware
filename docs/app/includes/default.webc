@@ -29,6 +29,17 @@
 		</nav>
 	</aside>
 	<main>
+		<nav class="breadcrumbs">
+			<script webc:type="js" webc:is="template">
+				eleventyNavigationToHtml(
+					eleventyNavigationBreadcrumb(
+						$data.collections.all,
+						$data.eleventyNavigation.key,
+						{allowMissing: true}
+					)
+				)
+			</script>
+		</nav>
 		<header webc:if="title">
 			<h1 @text="title"></h1>
 		</header>

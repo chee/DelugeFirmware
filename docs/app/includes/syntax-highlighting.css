@@ -1,23 +1,27 @@
 code[class*="language-"],
 pre[class*="language-"] {
-	font-size: .95em;
-	color: white;
-	background: none;
-	text-shadow: 0 1px #333;
-	font-family: Iosevka, IBM Plex Mono, monospace;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	line-height: 1.5;
-	-moz-tab-size: 2;
 	-o-tab-size: 2;
-	tab-size: 2;
-	-webkit-hyphens: none;
 	-moz-hyphens: none;
+	-moz-tab-size: 2;
+	tab-size: 2;
+
 	-ms-hyphens: none;
+	-webkit-hyphens: none;
 	hyphens: none;
+
+	background: none;
+	color: white;
+	font-family: var(--monospace);
+	font-size: .95em;
+
+	line-height: 1.2;
+
+	text-align: left;
+	text-shadow: 0 1px #333;
+	white-space: pre;
+	word-break: normal;
+	word-spacing: normal;
+	word-wrap: normal;
 }
 
 /* Code blocks */
@@ -30,7 +34,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	background: #282a36;
+	background: var(--code-fill);
 }
 
 /* Inline code */

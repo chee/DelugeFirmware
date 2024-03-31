@@ -10,6 +10,7 @@
 	--magenta: #f70cf7;
 	--orange: #ffbc34;
 	--grey: #cccccc;
+	--dark: #282a36;
 	--sans-serif: "Karla", "Franklin Gothic", sans-serif;
 	--monospace: IBM Plex Mono, monospace;
 	--7seg-font: "7seg";
@@ -32,6 +33,8 @@
 
 	--gold-encoder-fill: gold;
 	--gold-encoder-line: black;
+
+	--code-fill: var(--dark);
 }
 
 * {
@@ -170,7 +173,7 @@ body {
 	/* 		display: block; */
 	height: 100%;
 	width: 100%;
-	padding: 0 0.25em;
+	padding: 0 2px;
 	border-radius: 4px;
 }
 
@@ -193,6 +196,38 @@ body {
 	padding-left: 0;
 }
 
+.sidebar-content li a {
+	white-space: nowrap;
+}
+
+.breadcrumbs ul {
+	display: flex;
+	list-style-type: none;
+	gap: 5px;
+	margin: 0;
+	padding: 0;
+}
+
+.breadcrumbs ul li::after {
+	content: "►";
+	font-size: 0.5em;
+	margin-left: 5px;
+	opacity: 0.7;
+}
+
+.breadcrumbs ul li a {
+	color: #fafafa;
+	font-size: 16px;
+	text-decoration: none;
+	border-bottom: 2px solid;
+	border-bottom-color: var(--fill);
+	transition: border-bottom-color 0.2s;
+}
+
+.breadcrumbs ul li a:hover {
+	border-bottom-color: var(--line);
+}
+
 main {
 	max-width: 80ex;
 }
@@ -206,8 +241,10 @@ main a {
 }
 
 main code {
-	border: 1px solid;
-	padding: 0 2px;
+	border: 1px solid color-mix(in srgb, var(--line) 30%, var(--code-fill));
+	padding: 1px 4px;
+	border-radius: 4px;
+	background: color-mix(in srgb, var(--line) 5%, var(--code-fill));
 }
 
 main pre code {
