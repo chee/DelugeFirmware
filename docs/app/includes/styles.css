@@ -44,6 +44,13 @@
 
 @font-face {
 	font-family: "Karla";
+	src: url("/DelugeFirmware/manual/fonts/karla.ttf") format("truetype")
+		url("/fonts/karla.ttf") format("truetype");
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Karla";
 	src: url("/fonts/karla.ttf") format("truetype");
 	font-display: swap;
 }
@@ -56,8 +63,22 @@
 }
 
 @font-face {
+	font-family: "Karla";
+	src: url("/DelugeFirmware/manual/fonts/karla.ttf")
+		url("/fonts/karla-italic.ttf") format("truetype");
+	font-display: swap;
+	font-style: italic;
+}
+
+@font-face {
 	font-family: "7seg";
 	src: url("/fonts/7seg.ttf") format("truetype");
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "7seg";
+	src: url("/DelugeFirmware/manual/fonts/7seg.ttf") format("truetype");
 	font-display: swap;
 }
 
