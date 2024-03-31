@@ -3,7 +3,6 @@
 <title webc:if="title" @raw="`${title} | Deluge Community Manual`"></title>
 <title webc:else>Deluge Community Manual</title>
 <link rel="stylesheet" :href="getBundleFileUrl('css')" webc:keep>
-
 <script webc:setup>
 	const allNavigation = navigation.create($data.collections.all)
 </script>
@@ -38,4 +37,5 @@
 	</main>
 </div>
 
+<link rel="stylesheet" href="/syntax-highlighting.css">
 <link rel="stylesheet" href="/styles.css">

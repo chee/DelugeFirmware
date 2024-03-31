@@ -5,6 +5,7 @@ import mdAnchor from "markdown-it-anchor"
 import mdDeluge from "./markdown-it-deluge.js"
 import {EleventyRenderPlugin as render} from "@11ty/eleventy"
 import bundler from "@11ty/eleventy-plugin-bundle"
+import syntaxHighlighting from "@11ty/eleventy-plugin-syntaxhighlight"
 
 /**
  * @param {import("@chee/eleventy-stable").UserConfig} config
@@ -15,13 +16,18 @@ export default config => {
 		watch: ["components/**/*.webc", "_site/**/*.css"],
 	})
 	config.addPlugin(render)
-	config.addPlugin(bundler)
+	config.addPlugin(bundler, {
+		hoistDuplicateBundlesFor: ["css", "js"],
+	})
+	config.addPlugin(syntaxHighlighting)
 	let webcOptions = {
 		components: [
 			"components/**/*.webc",
 			// todo
 			"npm:@11ty/eleventy-img/*.webc",
 		],
+		scopedHelpers: ["css", "js", "html"],
+		transformData: {},
 		useTransform: true,
 	}
 	config.addPlugin(webc, webcOptions)
@@ -29,6 +35,7 @@ export default config => {
 	config.addFilter("sortByOrder", function (list) {
 		return list.sort((a, b) => a.order - b.order)
 	})
+
 	config.addFilter("toTitleCase", function (string) {
 		return string.replace(
 			/\w\S*/g,

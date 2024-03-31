@@ -209,3 +209,7 @@ main code {
 	border: 1px solid;
 	padding: 0 2px;
 }
+
+main pre code {
+	border: none;
+}
