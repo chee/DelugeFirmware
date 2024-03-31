@@ -7,7 +7,7 @@ import {EleventyRenderPlugin as render} from "@11ty/eleventy"
 import bundler from "@11ty/eleventy-plugin-bundle"
 
 /**
- * @param {import("@11ty/eleventy").UserConfig} config
+ * @param {import("@chee/eleventy-stable").UserConfig} config
  */
 export default config => {
 	config.setServerOptions({
@@ -58,7 +58,7 @@ export default config => {
 			includes: "../app/includes",
 			data: "../app/data",
 		},
-		// htmlTemplateEngine: "webc",
-		// markdownTemplateEngine: "webc",
+		htmlTemplateEngine: "webc",
+		markdownTemplateEngine: "liquid",
 	}
 }
