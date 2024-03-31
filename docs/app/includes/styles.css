@@ -155,7 +155,7 @@ body {
 .sidebar details > summary::before {
 	content: "►";
 	display: inline-block;
-	font-size: .8em;
+	font-size: 0.8em;
 }
 
 .sidebar details[open] > summary::before {
@@ -320,4 +320,174 @@ main .idea {
 	border: 1px solid #0c9;
 	background: #3fc;
 	color: black;
+}
+
+@keyframes blink {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+circle-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.circle-button-button {
+	border-radius: 100%;
+	height: 24px;
+	width: 24px;
+	display: inline-block;
+}
+
+.circle-button-button.blinking {
+	animation: blink 1s steps(1) infinite;
+}
+
+circle-button .labels {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+circle-button .label {
+	display: block;
+}
+
+circle-button .label,
+circle-button .alt-label:not(:empty) {
+	text-transform: UPPERCASE;
+	background: var(--label-fill);
+	color: var(--label-line);
+	font-size: 14px;
+	padding: 0 3px;
+}
+
+circle-button .alt-label:not(:empty) {
+	background: var(--label-line);
+	color: var(--label-fill);
+}
+
+deluge-logo {
+	font-weight: 900;
+	letter-spacing: -1px;
+	white-space: nowrap;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25ex;
+}
+
+deluge-logo svg {
+	height: 1em;
+}
+
+.deluge-dots {
+	fill: var(--line);
+}
+
+.added-in {
+	background: color-mix(in srgb, var(--line) 95%, var(--fill));
+	color: var(--fill);
+	border: 1px solid color-mix(in srgb, var(--line) 20%, var(--fill));
+	padding: 0 0.24em;
+	letter-spacing: -1px;
+	border-radius: 4px;
+}
+
+affect-entire {
+	display: block;
+	position: relative;
+	width: 240px;
+	height: 120px;
+}
+
+.affect-entire {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 100px;
+}
+
+affect-entire .lines {
+	position: absolute;
+	width: 60px;
+	left: 80px;
+}
+
+affect-entire .song-and-clip {
+	display: flex;
+	flex-direction: column;
+}
+
+affect-entire song-button {
+	position: absolute;
+	top: 20px;
+	right: 0;
+	width: 80px;
+}
+
+affect-entire clip-button {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 80px;
+}
+
+affect-entire .song-and-clip circle-button {
+	justify-content: start;
+}
+
+seven-segment {
+	font-family: var(--7seg-font);
+	width: 4ch;
+	text-align: right;
+	background: var(--7seg-fill);
+	color: var(--7seg-line);
+	display: inline-block;
+	padding: 2px;
+}
+
+.encoder svg {
+	height: 2em;
+}
+
+.encoder circle {
+	stroke-width: 4;
+}
+
+.encoder--gold circle {
+	stroke: var(--gold-encoder-line);
+	fill: var(--gold-encoder-fill);
+}
+
+.encoder--gold text {
+	stroke: var(--gold-encoder-line);
+	fill: var(--gold-encoder-line);
+	font-size: 1.1em;
+}
+
+.encoder--black circle {
+	stroke: var(--black-encoder-line);
+	fill: var(--black-encoder-fill);
+}
+
+.encoder--black text {
+	stroke: var(--black-encoder-line);
+	fill: var(--black-encoder-line);
+	font-size: 1.1em;
+}
+
+.encoder--scroll circle {
+	stroke: var(--scroll-encoder-line);
+	fill: var(--scroll-encoder-fill);
+}
+
+.encoder--scroll text {
+	stroke: var(--scroll-encoder-line);
+	fill: var(--scroll-encoder-line);
+	font-size: 1.4em;
 }

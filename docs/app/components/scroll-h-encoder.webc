@@ -1,24 +1,6 @@
-<template webc:root title="SCROLL◄►">
+<template webc:root title="SCROLL◄►" class="encoder encoder--scroll">
 	<svg viewBox="0 0 100 100">
 		<circle cx="50" cy="50" r="40"/>
 		<text x="22" y="60">◄►</text>
 	</svg>
 </template>
-
-<style>
-	scroll-h-encoder svg {
-		height: 2em;
-	}
-
-	scroll-h-encoder circle {
-		stroke: var(--scroll-encoder-line);
-		stroke-width: 4;
-		fill: var(--scroll-encoder-fill);
-	}
-
-	scroll-h-encoder text {
-		stroke: var(--scroll-encoder-line);
-		fill: var(--scroll-encoder-line);
-		font-size: 1.4em;
-	}
-</style>

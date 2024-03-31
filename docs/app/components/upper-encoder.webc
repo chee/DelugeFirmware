@@ -1,24 +1,6 @@
-<template webc:root title="UPPER">
+<template webc:root title="UPPER" class="encoder encoder--gold">
 	<svg viewBox="0 0 100 100">
 		<circle cx="50" cy="50" r="40"/>
 		<text x="16" y="60">UPPER</text>
 	</svg>
 </template>
-
-<style>
-	upper-encoder svg {
-		height: 2em;
-	}
-
-	upper-encoder circle {
-		stroke: var(--gold-encoder-line);
-		stroke-width: 4;
-		fill: var(--gold-encoder-fill);
-	}
-
-	upper-encoder text {
-		stroke: var(--gold-encoder-line);
-		fill: var(--gold-encoder-line);
-		font-size: 1.1em;
-	}
-</style>

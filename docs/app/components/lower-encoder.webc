@@ -1,24 +1,6 @@
-<template webc:root title="LOWER">
+<template webc:root title="LOWER" class="encoder encoder--gold">
 	<svg viewBox="0 0 100 100">
 		<circle cx="50" cy="50" r="40"/>
 		<text x="16" y="60">LOWER</text>
 	</svg>
 </template>
-
-<style>
-	lower-encoder svg {
-		height: 2em;
-	}
-
-	lower-encoder circle {
-		stroke: var(--gold-encoder-line);
-		stroke-width: 4;
-		fill: var(--gold-encoder-fill);
-	}
-
-	lower-encoder text {
-		stroke: var(--gold-encoder-line);
-		fill: var(--gold-encoder-line);
-		font-size: 1.1em;
-	}
-</style>

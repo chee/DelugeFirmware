@@ -3,15 +3,3 @@
 	<slot @text="seg"></slot>
 </span>
 </template>
-
-<style>
-	seven-segment {
-		font-family: var(--7seg-font);
-		width: 4ch;
-		text-align: right;
-		background: var(--7seg-fill);
-		color: var(--7seg-line);
-		display: inline-block;
-		padding: 2px;
-	}
-</style>

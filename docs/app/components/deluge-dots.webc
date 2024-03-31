@@ -34,9 +34,3 @@
 	<rect y="9" x="4" width="1" height="1"></rect>
 	<rect y="9" x="7" width="1" height="1"></rect>
 </svg>
-
-<style>
-	.deluge-dots {
-		fill: var(--line);
-	}
-</style>
