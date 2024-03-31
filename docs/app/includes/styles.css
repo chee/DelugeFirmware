@@ -444,7 +444,6 @@ affect-entire .song-and-clip circle-button {
 seven-segment {
 	font-family: var(--7seg-font);
 	width: 4ch;
-	text-align: right;
 	background: var(--7seg-fill);
 	color: var(--7seg-line);
 	display: inline-block;
@@ -490,4 +489,8 @@ seven-segment {
 	stroke: var(--scroll-encoder-line);
 	fill: var(--scroll-encoder-line);
 	font-size: 1.4em;
+}
+
+added-in p {
+	display: inline;
 }
