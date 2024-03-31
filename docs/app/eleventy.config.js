@@ -22,23 +22,22 @@ export default config => {
 	config.addPlugin(dirstats)
 	config.addPlugin(render)
 	config.addPlugin(nav)
-	config.addPlugin(bundler, {
-		hoistDuplicateBundlesFor: ["css", "js"],
-	})
 	config.addPlugin(syntaxHighlighting)
-	let webcOptions = {
+	// todo use webc:type=11ty liquid block to add css to bundle from webc component?
+	config.addPlugin(bundler, {
+		hoistDuplicateBundles: ["css", "js"],
+	})
+	config.addPlugin(webc, {
 		components: [
 			"components/**/*.webc",
 			// todo
 			"npm:@11ty/eleventy-img/*.webc",
 		],
-		scopedHelpers: ["css", "js", "html"],
-		transformData: {},
 		useTransform: true,
-	}
-	config.addPlugin(webc, webcOptions)
+	})
 
 	config.addFilter("sortByOrder", function (list) {
+		if (!list) return []
 		return list.sort((a, b) => a.order - b.order)
 	})
 
@@ -74,7 +73,7 @@ export default config => {
 			includes: "../app/includes",
 			data: "../app/data",
 		},
- 		htmlTemplateEngine: "webc",
+		htmlTemplateEngine: "webc",
 		markdownTemplateEngine: "liquid",
 	}
 }
