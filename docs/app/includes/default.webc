@@ -3,6 +3,7 @@
 <title webc:if="title" @raw="`${title} | Deluge Community Manual`"></title>
 <title webc:else>Deluge Community Manual</title>
 <link rel="stylesheet" :href="getBundleFileUrl('css')" webc:keep>
+<link rel="icon" href="/images/dots.png">
 <script webc:setup>
 	const allNavigation = navigation.create($data.collections.all)
 </script>
