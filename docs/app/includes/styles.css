@@ -255,13 +255,13 @@ body {
 }
 
 main {
-	max-width: 80ex;
+	max-width: 84ex;
 	margin-top: var(--header-height);
 	margin-left: var(--sidebar-width);
 	margin-right: 1em;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 820px) {
 	main {
 		margin-left: 1em;
 	}
@@ -318,6 +318,41 @@ main {
 
 main h1:first-child {
 	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 3rem;
+}
+
+main h2 {
+	margin-bottom: 0px;
+	font-size: 2rem;
+	padding-top: 1.2rem;
+}
+
+main h2:first-of-type {
+	margin-top: 0;
+	padding-top: 0.75rem;
+}
+
+main h2 + * {
+	margin-top: 8px;
+}
+
+main h3,
+main h4,
+main h5,
+main h6 {
+	margin-bottom: 0;
+}
+
+main h3 + *,
+main h4 + *,
+main h5 + *,
+main h6 + * {
+	margin-top: 2px;
+}
+
+p:has(img) {
+	margin: 0;
 }
 
 main a {
