@@ -8,13 +8,13 @@
 <style>
 	.deluge-oled {
 		text-transform: uppercase;
-		font-weight: bold;
+		font-weight: 400;
 		font-family: var(--monospace);
 		padding: 0;
 		border: 0;
 	}
 
-	deluge-menu-item {
+	menu-item {
 		display: inline-flex;
 		gap: 0.5em;
 		align-items: center;
