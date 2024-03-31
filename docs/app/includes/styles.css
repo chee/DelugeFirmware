@@ -22,7 +22,7 @@
 	--label-fill: var(--black);
 	--label-line: var(--white);
 
-	--7seg-fill: var(--black);
+	--7seg-fill: var(--dark);
 	--7seg-line: var(--red);
 
 	--black-encoder-fill: #333;
@@ -249,8 +249,75 @@ main code {
 	padding: 1px 4px;
 	border-radius: 4px;
 	background: color-mix(in srgb, var(--line) 5%, var(--code-fill));
+	color: var(--white);
 }
 
 main pre code {
 	border: none;
+}
+
+main img {
+	max-width: 100%;
+}
+
+main svg {
+	vertical-align: middle;
+}
+
+main circle-button {
+	vertical-align: middle;
+}
+
+main .note::before,
+main .caution::before,
+main .idea::before {
+	display: block;
+	white-space: nowrap;
+	text-shadow: 1px 1px 0 #000;
+}
+
+main .note::before {
+	content: "⚡";
+}
+
+main .caution,
+main .idea,
+main .note {
+	display: flex;
+	align-items: center;
+	padding: 1em;
+	gap: 1em;
+}
+
+main .note {
+	border: 1px solid #0316ff;
+	background: #99f7ff;
+	color: black;
+}
+
+main .caution p,
+main .idea p,
+main .note p {
+	margin: 0;
+	max-width: 100%;
+}
+
+main .caution::before {
+	content: "⚠️";
+}
+
+main .caution {
+	border: 1px solid #ed0;
+	background: #ffffcc;
+	color: black;
+}
+
+main .idea::before {
+	content: "💡";
+}
+
+main .idea {
+	border: 1px solid #0c9;
+	background: #3fc;
+	color: black;
 }

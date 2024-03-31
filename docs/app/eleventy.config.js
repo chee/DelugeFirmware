@@ -3,11 +3,13 @@ import md from "markdown-it"
 import {EleventyHtmlBasePlugin as base} from "@11ty/eleventy"
 import mdAnchor from "markdown-it-anchor"
 import mdDeluge from "./markdown-it-deluge.js"
+import mdContainer from "markdown-it-container"
 import {EleventyRenderPlugin as render} from "@11ty/eleventy"
 import bundler from "@11ty/eleventy-plugin-bundle"
 import syntaxHighlighting from "@11ty/eleventy-plugin-syntaxhighlight"
 import dirstats from "@11ty/eleventy-plugin-directory-output"
 import nav from "@11ty/eleventy-navigation"
+
 /**
  * @param {import("@chee/eleventy-stable").UserConfig} config
  */
@@ -58,6 +60,9 @@ export default config => {
 		})
 			.use(mdAnchor)
 			.use(mdDeluge)
+			.use(mdContainer, "note")
+			.use(mdContainer, "caution")
+			.use(mdContainer, "idea")
 	)
 	config.addPassthroughCopy("fonts")
 	config.addPassthroughCopy("images")
