@@ -140,7 +140,7 @@ body {
 	top: var(--header-height);
 	position: fixed;
 	font-size: 0.9rem;
-	padding: 0 1em;
+	padding: 0.8rem;
 }
 
 #navigation-items {
