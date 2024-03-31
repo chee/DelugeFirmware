@@ -4,9 +4,6 @@ navigation:
   title: Community Features
 ---
 
-- Press [SHIFT] and + turn (SCROLL◄►) clockwise to 'stretch' the audio length
-  longer.
-
 ## |FEAT| Community Features
 
 ### |DRUM| Drum Randomizer
@@ -73,7 +70,7 @@ resample and remove instance afterwards. TODO link to fx reference for grain and
 Set to 7SEG to emulate the 7seg screen on an OLED <deluge-logo></deluge-logo>.
 
 When set to Toggle, the screen type can be toggled by pressing [SHIFT] +
-[LEARN] + [AFFECT ENTIRE]
+[LEARN / INPUT] + [AFFECT ENTIRE]
 
 Can be used with 7seg hardware to render OLEd on an external display. TODO link
 to instructinos
