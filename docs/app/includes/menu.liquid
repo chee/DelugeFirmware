@@ -4,7 +4,7 @@
 			{% if item.7seg %}{{item.7seg}}{% else %}{{item.text}}{% endif %}
 		{% endcapture %}
 		{% capture title %}
-			<deluge-menu-item seg="{{seg}}">{{item.text}}</deluge-menu-item>
+			<menu-item seg="{{seg}}">{{item.text}}</menu-item>
 		{% endcapture %}
 		<li>
 			{% if item.items %}
