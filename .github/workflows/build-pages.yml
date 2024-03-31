@@ -6,9 +6,10 @@ name: Deploy Pages site
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["community"]
+    branches: ["community", "docs"]
     paths:
-      - 'pages/**'
+      - "docs/**"
+      - "pages/**"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -42,7 +43,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './pages/public'
+          path: "./pages/public"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
