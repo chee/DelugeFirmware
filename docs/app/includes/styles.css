@@ -479,7 +479,7 @@ circle-button .alt-label:not(:empty) {
 	background: var(--label-fill);
 	color: var(--label-line);
 	font-size: 14px;
-	padding: 0 3px;
+	padding: 1px 4px 1px 3px;
 }
 
 circle-button .alt-label:not(:empty) {
