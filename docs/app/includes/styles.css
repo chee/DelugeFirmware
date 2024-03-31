@@ -13,7 +13,7 @@
 	--dark: #282a36;
 	--sans-serif: "Karla-hack", "Karla", "Franklin Gothic", sans-serif;
 	--monospace: IBM Plex Mono, monospace;
-	--7seg-font: "7seg";
+	--7seg-font: "7seg-hack", "7seg", monospace;
 
 	--font-family: var(--sans-serif);
 
