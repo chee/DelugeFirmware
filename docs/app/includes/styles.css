@@ -258,11 +258,12 @@ main {
 	max-width: 80ex;
 	margin-top: var(--header-height);
 	margin-left: var(--sidebar-width);
+	margin-right: 1em;
 }
 
 @media screen and (max-width: 768px) {
 	main {
-		margin-left: 0;
+		margin-left: 1em;
 	}
 	#navigation-toggle {
 		display: inline-flex;
