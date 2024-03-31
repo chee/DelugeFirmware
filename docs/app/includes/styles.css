@@ -155,6 +155,26 @@ body {
 	#navigation-toggle:has(:checked) ~ #navigation-items {
 		display: block;
 	}
+
+	.sidebar,
+	#navigation {
+		position: sticky;
+		display: block;
+		top: 0;
+		background: var(--fill);
+		z-index: 1;
+		width: 100vw;
+	}
+
+	#navigation-items {
+		display: none;
+		height: 100vh;
+		width: 100vw;
+		background: var(--fill);
+		font-size: 1.2rem;
+		overflow: auto;
+		padding-bottom: 10rem;
+	}
 }
 
 .sidebar {
