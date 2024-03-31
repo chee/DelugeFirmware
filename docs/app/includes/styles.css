@@ -11,7 +11,7 @@
 	--orange: #ffbc34;
 	--grey: #cccccc;
 	--dark: #282a36;
-	--sans-serif: "Karla", "Franklin Gothic", sans-serif;
+	--sans-serif: "Karla-hack", "Karla", "Franklin Gothic", sans-serif;
 	--monospace: IBM Plex Mono, monospace;
 	--7seg-font: "7seg";
 
@@ -44,14 +44,14 @@
 
 @font-face {
 	font-family: "Karla";
-	src: url("/DelugeFirmware/manual/fonts/karla.ttf") format("truetype")
-		url("/fonts/karla.ttf") format("truetype");
+	src: url("/fonts/karla.ttf") format("truetype");
 	font-display: swap;
 }
 
 @font-face {
-	font-family: "Karla";
-	src: url("/fonts/karla.ttf") format("truetype");
+	font-family: "Karla-hack";
+	src: url("/DelugeFirmware/manual/fonts/karla.ttf") format("truetype")
+		url("/fonts/karla.ttf") format("truetype");
 	font-display: swap;
 }
 
@@ -63,7 +63,7 @@
 }
 
 @font-face {
-	font-family: "Karla";
+	font-family: "Karla-hack";
 	src: url("/DelugeFirmware/manual/fonts/karla.ttf")
 		url("/fonts/karla-italic.ttf") format("truetype");
 	font-display: swap;
@@ -77,7 +77,7 @@
 }
 
 @font-face {
-	font-family: "7seg";
+	font-family: "7seg-hack";
 	src: url("/DelugeFirmware/manual/fonts/7seg.ttf") format("truetype");
 	font-display: swap;
 }
