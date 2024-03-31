@@ -4,7 +4,7 @@ navigation:
   title: MIDI Follow
 ---
 
-<added-in>c1.0.0</added-in>
+<added-in>c1.1.0</added-in>
 
 MIDI Follow mode directs all incoming MIDI messages from a chosen device to the
 active view. It works with arranger view, song view and all the clip views. MIDI
