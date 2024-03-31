@@ -1,14 +1,17 @@
-import webc from "@11ty/eleventy-plugin-webc"
-import md from "markdown-it"
-import {EleventyHtmlBasePlugin as base} from "@11ty/eleventy"
-import mdAnchor from "markdown-it-anchor"
-import mdDeluge from "./markdown-it-deluge.js"
-import mdContainer from "markdown-it-container"
-import {EleventyRenderPlugin as render} from "@11ty/eleventy"
+import {
+	EleventyHtmlBasePlugin as base,
+	EleventyRenderPlugin as render,
+} from "@11ty/eleventy"
 import bundler from "@11ty/eleventy-plugin-bundle"
 import syntaxHighlighting from "@11ty/eleventy-plugin-syntaxhighlight"
 import dirstats from "@11ty/eleventy-plugin-directory-output"
 import nav from "@11ty/eleventy-navigation"
+import webc from "@11ty/eleventy-plugin-webc"
+
+import md from "markdown-it"
+import mdAnchor from "markdown-it-anchor"
+import mdContainer from "markdown-it-container"
+import mdDeluge from "./markdown-it-deluge.js"
 
 /**
  * @param {import("@chee/eleventy-stable").UserConfig} config
