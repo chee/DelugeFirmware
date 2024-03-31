@@ -39,6 +39,7 @@
 
 * {
 	box-sizing: border-box;
+	letter-spacing: -0.05em;
 }
 
 @font-face {
@@ -151,13 +152,13 @@ body {
 	list-style-type: none;
 }
 
-.sidebar details > summary::after {
+.sidebar details > summary::before {
 	content: "►";
 	display: inline-block;
-	font-size: .5em;
+	font-size: .8em;
 }
 
-.sidebar details[open] > summary::after {
+.sidebar details[open] > summary::before {
 	content: "▼";
 }
 
@@ -170,11 +171,9 @@ body {
 .sidebar li > span {
 	text-decoration: none;
 	color: var(--white);
-	/* 		display: block; */
+	display: inline-block;
 	height: 100%;
-	width: 100%;
-	padding: 0 2px;
-	border-radius: 4px;
+	width: 80%;
 }
 
 .sidebar ol {
@@ -183,13 +182,18 @@ body {
 	margin: 0;
 }
 
-.sidebar [aria-current="page"] {
+.sidebar li a > span {
+	padding: 0 2px;
+}
+
+.sidebar [aria-current="page"] span {
 	background: var(--pink);
 	font-weight: bold;
+	border-radius: 4px;
 }
 
 .sidebar ol ol {
-	padding-left: .5em;
+	padding-left: 1em;
 }
 
 .sidebar-content > ol > li > ol {

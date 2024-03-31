@@ -4,7 +4,7 @@
 		{% capture title %}
 			{% if item.url and item.link %}
 				<a {% if item.url == page.url %}aria-current="page"{% endif %} href="{{item.url}}">
-					{{item.name}}
+					<span>{{item.name}}</span>
 				</a>
 			{% else %}
 				<span>{{item.name}}</span>
