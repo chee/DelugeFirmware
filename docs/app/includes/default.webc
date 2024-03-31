@@ -7,7 +7,7 @@
 <link rel="stylesheet" :href="getBundleFileUrl('css')" webc:keep>
 <link rel="icon" href="/images/dots.png">
 <script webc:setup>
-	const allNavigation = navigation.create($data.collections.all)
+	const allNavigation = navigation.create($data.collections.all)[0].children
 </script>
 
 <header class="main-header">
